@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ZIP Password Removal</title>
+    <link rel="stylesheet" href="styles/zip.css">
+</head>
+<body>
+    <div class="container">
+        <h1>ZIP Password Removal</h1>
+        <p>Upload a ZIP file (.zip) to remove password protection.</p>
+        <form id="uploadForm">
+            <input type="file" id="file" name="file" accept=".zip" required>
+            <button type="submit">Remove Password</button>
+        </form>
+        <p><a href="index.html">← Back to Home</a></p>
+    </div>
+
+    <script>
+        document.getElementById('uploadForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+
+            const file = document.getElementById('file').files[0];
+
+            if (!file) {
+                alert("Please upload a file.");
+                return;
+            }
+
+            try {
+                // Notify the user (demo only)
+                alert("Password removal for ZIP files is not implemented in this demo.");
+            } catch (error) {
+                alert(`Error: ${error.message}`);
+            }
+        });
+    </script>
+</body>
+</html>

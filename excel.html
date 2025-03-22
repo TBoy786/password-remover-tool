@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Excel Password Removal</title>
+    <link rel="stylesheet" href="styles/excel.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <h1>Excel Password Removal</h1>
+        <p>Upload an Excel file (.xlsx, .xls) to remove password protection from sheets and workbooks.</p>
+        <form id="uploadForm">
+            <input type="file" id="file" name="file" accept=".xlsx, .xls" required>
+            <button type="submit">Remove Password</button>
+        </form>
+        <p><a href="index.html">← Back to Home</a></p>
+    </div>
+
+    <script>
+        document.getElementById('uploadForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+
+            const file = document.getElementById('file').files[0];
+
+            if (!file) {
+                alert("Please upload a file.");
+                return;
+            }
+
+            try {
+                // Read the file as an ArrayBuffer
+                const arrayBuffer = await file.arrayBuffer();
+
+                // Parse the Excel file
+                const workbook = XLSX.read(arrayBuffer, { type: 'array' });
+
+                // Remove sheet protections
+                workbook.SheetNames.forEach(sheetName => {
+                    const sheet = workbook.Sheets[sheetName];
+                    if (sheet.Protect) {
+                        sheet.Protect = false; // Remove sheet protection
+                    }
+                });
+
+                // Convert the workbook back to a file
+                const output = XLSX.write(workbook, { bookType: 'xlsx', type: 'array' });
+
+                // Create a Blob from the output
+                const blob = new Blob([output], { type: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet' });
+
+                // Create a download link
+                const url = window.URL.createObjectURL(blob);
+                const a = document.createElement('a');
+                a.href = url;
+                a.download = 'unprotected.xlsx'; // Default file name
+                document.body.appendChild(a);
+                a.click(); // Trigger the download
+                document.body.removeChild(a);
+                window.URL.revokeObjectURL(url);
+
+                // Notify the user
+                alert("Password removed successfully! Your file is ready for download.");
+            } catch (error) {
+                alert(`Error: ${error.message}`);
+            }
+        });
+    </script>
+</body>
+</html>

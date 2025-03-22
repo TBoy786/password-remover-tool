@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Password Remover Tool</title>
+    <style>
+        /* General Styles */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 800px; /* Adjusted for better spacing */
+            margin: 0 auto;
+            padding: 2rem;
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            color: #333333;
+            margin-bottom: 1rem;
+        }
+
+        p {
+            font-size: 1rem;
+            color: #666666;
+            margin-bottom: 2rem;
+        }
+
+        .tiles {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr); /* 2 columns */
+            gap: 1.5rem; /* Spacing between tiles */
+        }
+
+        .tile {
+            background-color: #ffffff;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            padding: 1.5rem;
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .tile:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+        }
+
+        .tile img {
+            width: 80px;
+            height: 80px;
+            margin-bottom: 1rem;
+        }
+
+        .tile h2 {
+            font-size: 1.5rem;
+            color: #333333;
+            margin-bottom: 0.5rem;
+        }
+
+        .tile p {
+            font-size: 0.9rem;
+            color: #666666;
+        }
+
+        .tile a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .tiles {
+                grid-template-columns: 1fr; /* 1 column on smaller screens */
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Password Remover Tool</h1>
+        <p>Unlock your files with ease. Select a file format to learn more about removing password protection.</p>
+        <div class="tiles">
+            <!-- Excel Tile -->
+            <div class="tile">
+                <a href="excel.html">
+                    <img src="https://img.icons8.com/color/96/ms-excel.png" alt="Excel Icon">
+                    <h2>Excel</h2>
+                    <p>Remove password protection from Excel sheets and workbooks.</p>
+                </a>
+            </div>
+
+            <!-- Word Tile -->
+            <div class="tile">
+                <a href="word.html">
+                    <img src="https://img.icons8.com/color/96/ms-word.png" alt="Word Icon">
+                    <h2>Word</h2>
+                    <p>Unlock password-protected Word documents effortlessly.</p>
+                </a>
+            </div>
+
+            <!-- PowerPoint Tile -->
+            <div class="tile">
+                <a href="powerpoint.html">
+                    <img src="https://img.icons8.com/color/96/ms-powerpoint.png" alt="PowerPoint Icon">
+                    <h2>PowerPoint</h2>
+                    <p>Remove passwords from PowerPoint presentations quickly.</p>
+                </a>
+            </div>
+
+            <!-- ZIP Tile -->
+            <div class="tile">
+                <a href="zip.html">
+                    <img src="https://img.icons8.com/color/96/zip.png" alt="ZIP Icon">
+                    <h2>ZIP</h2>
+                    <p>Unlock password-protected ZIP archives with ease.</p>
+                </a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
